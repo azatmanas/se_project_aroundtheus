@@ -1,4 +1,10 @@
 .header {
   margin-top: 45px;
-  max-width: 880px;
+  border-bottom: 1px rgba(255, 255, 255, 1);
+  width: 100%;
+}
+
+.headr__logo {
+  height: 33px;
+  width: 173px;
 }
