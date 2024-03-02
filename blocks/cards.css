@@ -1,6 +1,7 @@
 .cards {
   max-width: 880px;
   width: 100%;
+  margin: 47px auto 67px;
 }
 
 .card__list {
@@ -38,6 +39,7 @@
   background: transparent url(../images/Group.svg) center no-repeat;
   width: 21px;
   height: 18px;
+  cursor: pointer;
 }
 
 .card__title {
