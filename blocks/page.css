@@ -18,7 +18,7 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 10px) {
   .page__section {
     margin: 0 20px;
     max-width: calc(100% - 40px);

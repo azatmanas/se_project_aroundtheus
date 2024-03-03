@@ -82,6 +82,7 @@
 @media screen and (max-width: 480px) {
   .profile {
     flex-direction: column;
+    padding: 0 19px;
   }
 
   .profile__info {
