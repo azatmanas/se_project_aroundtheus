@@ -7,10 +7,7 @@
 .profile__info {
   display: grid;
   grid-template-areas: "title button" "description description ";
-  grid-template-columns: minmax(auto, 373px) auto;
-  font-size: 42px;
-  line-height: 0.9;
-  font-weight: 500;
+  grid-template-columns: minmax(auto, 415px) auto;
 }
 
 .profile__edit-button {
@@ -46,7 +43,7 @@
   font-family: "Inter", Arial, serif;
   font-style: italic;
   font-size: 42px;
-  line-height: 0.9;
+  line-height: 48px;
   font-weight: 500;
   grid-area: title;
   text-overflow: ellipsis;
@@ -60,7 +57,7 @@
   font-family: "Inter", Arial, serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 0.9;
+  line-height: 22px;
   grid-area: description;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -82,7 +79,7 @@
 @media screen and (max-width: 480px) {
   .profile {
     flex-direction: column;
-    padding: 0 19px;
+    padding: 0 19px 0;
   }
 
   .profile__info {
