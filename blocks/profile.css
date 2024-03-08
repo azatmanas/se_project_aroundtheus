@@ -19,6 +19,7 @@
   grid-area: button;
   border: 1px solid white;
   transition: opacity 0.2s linear;
+  margin-right: 20px;
 }
 
 .profile__edit-button:hover {
@@ -45,6 +46,7 @@
 
 .profile__title {
   font-family: "Inter", Arial, sans-serif;
+  width: 373px;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
@@ -113,7 +115,7 @@
 
   .profile__add-button {
     padding: 0;
-    margin: 36px 19px;
+    margin: 36px 19px 0;
     width: 282px;
   }
 
