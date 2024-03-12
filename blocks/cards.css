@@ -1,7 +1,7 @@
 .cards {
   max-width: 880px;
   width: 100%;
-  margin: 47px auto 67px;
+  margin: 51px auto 67px;
 }
 
 .cards__list {
@@ -11,13 +11,6 @@
   gap: 20px 17px;
   padding: 0;
   margin: 0;
-}
-
-
-
-.cards__like-button:hover {
-  opacity: 0.5s;
-  cursor: pointer;
 }
 
 @media screen and(max-width:680px) {

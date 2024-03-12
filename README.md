@@ -11,9 +11,7 @@ Images
 
 Link to project:
 
-https://github.com/azatmanas/se_project_aroundtheus
-
-Link tp description video:
+https://azatmanas.github.io/se_project_aroundtheus/
 
 Link to Figma File:
 

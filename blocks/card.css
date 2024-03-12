@@ -22,16 +22,6 @@
   border-radius: 0 0 10px 10px;
 }
 
-.card__like-button {
-  background: transparent url(../images/Group.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 21px;
-  height: 18px;
-  transition: opacity 0.3s;
-  border: none;
-}
-
 .card__title {
   font-family: "Inter", Arial, sans-serif;
   font-weight: 900;
@@ -41,4 +31,20 @@
   overflow: hidden;
   white-space: nowrap;
   margin: 0;
+}
+
+.card__like-button {
+  background: url(../images/Group.svg);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 18px;
+  transition: opacity 0.3s linear;
+  border: none;
+}
+
+.card__like-button:hover {
+  opacity: 0.5s;
+  cursor: pointer;
 }
