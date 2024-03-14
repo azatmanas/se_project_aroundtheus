@@ -4,22 +4,13 @@
   padding: 45px 0 41px;
 }
 
-.headr__logo {
-  height: 33px;
+.header__logo {
   width: 173px;
-  margin: 0 0 41px 0;
 }
 
 @media screen and (max-width: 680px) {
-  .header {
-    width: 100%;
-    margin: 28px 0 42px;
-    align-self: center;
-  }
-
   .header__logo {
-    width: 126px;
-    margin: 0 167px 32px 27px;
-    padding: 0;
+    max-width: 126px;
+    padding-left: 27px;
   }
 }
