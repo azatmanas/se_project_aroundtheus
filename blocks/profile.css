@@ -83,12 +83,12 @@
 @media screen and (max-width: 680px) {
   .profile {
     flex-direction: column;
+    padding: 42px 19px 0;
   }
 
   .profile__title {
     line-height: normal;
     font-size: 22px;
-    margin: 0 10px 0 0;
     max-width: 250px;
   }
 
@@ -100,17 +100,18 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
-    margin-left: 62px;
-    margin-right: 62px;
+    max-width: 282px;
+    /* margin-left: 62px;
+    margin-right: 62px; */
+    grid-gap: 14px 10px;
   }
 
   .profile__description {
-    width: 100%;
+    max-width: calc(100% - 124px);
     text-align: center;
     font-size: 14px;
     line-height: 17px;
-    margin: 14px 0 0;
+    margin: 0;
   }
 
   .profile__add-button {
