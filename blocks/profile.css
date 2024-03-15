@@ -99,9 +99,6 @@
     justify-content: center;
     flex-wrap: wrap;
     max-width: 282px;
-
-    /* margin-left: 62px;
-    margin-right: 62px; */
     grid-gap: 14px 10px;
   }
 
