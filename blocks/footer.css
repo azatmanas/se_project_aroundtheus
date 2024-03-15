@@ -25,5 +25,6 @@
   .footer__copyright {
     font-size: 14px;
     line-height: 17px;
+    padding: 0 19px 36px 19px;
   }
 }

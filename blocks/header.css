@@ -14,4 +14,11 @@
     max-width: 126px;
     padding-left: 27px;
   }
+
+  .header {
+    height: 85px;
+    display: flex;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
 }
