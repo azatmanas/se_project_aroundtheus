@@ -44,25 +44,26 @@ const modalInputTitle = document.querySelector("#modat__input-title");
 const modalInputDescrp = document.querySelector("#modal__input-descrp");
 
 const modalEditForm = profileEditModal.querySelector(".modal__form");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
 }
 
-profileEditBtn.addEventListener("click", () => {
-  modalInputTitle.value = profileTitle.textContent;
-  modalInputDescrp.value = profileDescrp.textContent;
-
-  profileEditModal.classList.add("modal_opened");
-});
-
-modalCloseBtn.addEventListener("click", () => {
-  closePopup();
-});
-
-modalEditForm.addEventListener("submit", (e) => {
+function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = modalInputTitle.value;
   profileDescrp.textContent = modalInputDescrp.value;
   closePopup();
+}
+
+profileEditBtn.addEventListener("click", () => {
+  modalInputTitle.value = profileTitle.textContent;
+  modalInputDescrp.value = profileDescrp.textContent;
+  profileEditModal.classList.add("modal_opened");
 });
+
+modalCloseBtn.addEventListener("click", closePopup);
+
+modalEditForm.addEventListener("submit", handleProfileEditSubmit);
