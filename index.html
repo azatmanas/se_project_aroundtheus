@@ -50,7 +50,7 @@
           <input
             type="text"
             name="title"
-            id="modat__input-title"
+            id="modal__input-title"
             placeholder="Name"
             class="modal__input"
             value=""
@@ -70,7 +70,7 @@
     <!-- Add card modal -->
     <div class="modal" id="profile-add-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal__close-button"></button>
+        <button class="modal__close" id="modal__close-add-button"></button>
         <p class="modal__heading">New Place</p>
         <form class="modal__form" id="add__card-form">
           <input
@@ -78,19 +78,30 @@
             name="title"
             id="modal__input-title"
             placeholder="Title"
-            class="modal__input_title"
+            class="modal__input"
             value=""
           />
           <input
             type="text"
             name="url"
-            id="modal__input-descrption"
+            id="modal__input-url"
             placeholder="Image URL"
-            class="modal__input_url"
+            class="modal__input"
             value=""
           />
           <button class="modal__button" type="submit">Save</button>
         </form>
+      </div>
+    </div>
+
+    <div class="modal" id="modal__image-preview">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close"
+          id="modal__image-close"
+        ></button>
+        <img src="" alt="" class="modal__image-preview" />
       </div>
     </div>
 
@@ -99,7 +110,16 @@
         <img class="card__image" src="" alt="" />
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button type="button" class="card__like-button"></button>
+          <button
+            type="button"
+            aria-label="like"
+            class="card__like-button"
+          ></button>
+          <button
+            type="button"
+            aria-label="delete"
+            class="card__delete-button"
+          ></button>
         </div>
       </li>
     </template>
