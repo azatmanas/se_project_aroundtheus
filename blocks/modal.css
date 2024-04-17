@@ -87,9 +87,32 @@
   padding: 14px 124px 18px 125px;
 }
 
+.modal__close_image-preview {
+  bottom: calc(100% + 30px);
+  left: calc(100%-30%);
+}
+
+.modal__image {
+  max-width: 100%;
+  max-height: calc(75vh - 20px);
+  object-fit: cover;
+}
+
 .modal__image-preview {
+  position: relative;
   max-width: 75vw;
   max-height: 75vh;
+  margin: auto;
+  background: transparent;
+}
+
+.modal__text-preview {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.5px;
+  color: #fff;
+  margin: 10px 0;
 }
 
 @media screen and (max-width: 680px) {
@@ -118,5 +141,10 @@
     font-size: 14px;
     width: 238px;
     height: 46px;
+  }
+
+  .modal__close_image-preview {
+    bottom: calc(100% + 5px);
+    left: calc(100% + 5px);
   }
 }
