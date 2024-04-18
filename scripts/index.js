@@ -69,7 +69,7 @@ function openModal(modal) {
 
 function renderCard(item, method = "prepend") {
   const cardElement = getCardElement(item);
-  cardListEl.prepend(cardElement);
+  cardListEl[method](cardElement);
 }
 
 function handleProfileEditSubmit(evt) {
@@ -83,8 +83,10 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
-  renderCard({ name, link }, cardListEl);
+  const data = { name, link };
+  renderCard(data);
   closePopup(profileAddModal);
+  evt.target.reset();
 }
 
 function getCardElement(data) {
@@ -124,15 +126,13 @@ profileEditBtn.addEventListener("click", () => {
   openModal(profileEditModal);
 });
 
-/////ADD NEW CARD////
-
 addNewCardButton.addEventListener("click", () => openModal(profileAddModal));
 
 addCardModalCloseBtn.addEventListener("click", () =>
   closePopup(profileAddModal)
 );
 
-initialCards.forEach((data) => renderCard(data, cardListEl));
+initialCards.forEach((data) => renderCard(data));
 
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
