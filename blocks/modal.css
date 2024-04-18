@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   top: 0;
@@ -10,11 +10,14 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   padding: 0 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
-  display: flex;
   visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {
