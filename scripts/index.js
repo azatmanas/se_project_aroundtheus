@@ -1,32 +1,44 @@
 const initialCards = [
   {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    name: "Chicago",
+    link: "https://imageio.forbes.com/specials-images/imageserve/64c3fc893e9ca5472f03e583/Chicago-River-Tourboat-Downtown-Chicago-Skyscrapers/960x0.jpg?format=jpg",
+    // name: "Yosemite Valley",
+    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 
   {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    name: "San Francisco",
+    link: "https://worldstrides.com/wp-content/uploads/2015/07/iStock_000061296808_Large-1.jpg",
+    // name: "Lake Louise",
+    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
 
   {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    name: "Miami",
+    link: "https://www.islands.com/wp-content/uploads/2021/09/miami-beach-shutterstock.jpg",
+    // name: "Bald Mountains",
+    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
 
   {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    name: "Los Angeles",
+    link: "https://static.independent.co.uk/2023/07/07/10/iStock-515064346.jpg",
+    // name: "Latemar",
+    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
 
   {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    name: "Hawaii",
+    link: "https://ik.imgkit.net/3vlqs5axxjf/TW/ik-seo/uploadedImages/Art/2023/0703/T0703HAWISLANDHOP_C_HR/What-to-know-about-island-hopping-in-Hawaii.jpg",
+    // name: "Vanoise National Park",
+    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
 
   {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    name: "Las Vegas",
+    link: "https://media-cdn.tripadvisor.com/media/photo-m/1280/2a/34/2d/28/caption.jpg",
+    // name: "Lago di Braies",
+    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
 
@@ -36,7 +48,6 @@ const profileEditBtn = document.querySelector("#profile__edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
 
-const addCardModalCloseBtn = document.querySelector("#modal__close-add-button");
 const profileTitle = document.querySelector("#profile__title");
 const profileDescrption = document.querySelector(".profile__description");
 
@@ -127,10 +138,6 @@ profileEditBtn.addEventListener("click", () => {
 });
 
 addNewCardButton.addEventListener("click", () => openModal(profileAddModal));
-
-addCardModalCloseBtn.addEventListener("click", () =>
-  closePopup(profileAddModal)
-);
 
 initialCards.forEach((data) => renderCard(data));
 
