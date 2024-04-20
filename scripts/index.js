@@ -133,7 +133,7 @@ addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
 profileEditBtn.addEventListener("click", () => {
   modalInputTitle.value = profileTitle.textContent;
-  modalInputDescrption.value = modalInputDescrption.textContent;
+  modalInputDescrption.value = profileDescrption.textContent;
   openModal(profileEditModal);
 });
 
