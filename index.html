@@ -46,7 +46,7 @@
       <div class="modal__container">
         <button class="modal__close" id="modal__close-button"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <form class="modal__form" novalidate>
           <input
             type="text"
             name="title"
@@ -58,13 +58,14 @@
             required
           />
           <span
-            class="modal__error_visible modal__input_type_error"
-            id="profile-title-input-error"
+            class="modal__error_visible"
+            id="modal__input-title-error"
           ></span>
+
           <input
             type="text"
             name="description"
-            id="modal__input-url"
+            id="profile__description-input"
             placeholder="Description"
             class="modal__input"
             minlength="2"
@@ -72,36 +73,35 @@
             required
           />
           <span
-            class="modal__error_visible modal__input_type_error"
-            id="profile-description-input-error"
+            class="modal__error_visible"
+            id="profile__description-input-error"
           ></span>
-          <button
-            class="modal__button modal__button_disabled"
-            type="submit"
-            disabled
-          >
-            Save
-          </button>
+
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
     <!-- Add card modal -->
+
     <div class="modal" id="profile-add-modal">
       <div class="modal__container">
         <button class="modal__close" id="modal__close-add-button"></button>
         <p class="modal__heading">New Place</p>
-        <form class="modal__form" id="add__card-form">
+        <form class="modal__form" id="add__card-form" novalidate>
           <input
             type="text"
             name="title"
-            id="modal__input-title"
+            id="modal__input-card-title"
             placeholder="Title"
             class="modal__input"
             value=""
+            minlength="1"
+            maxlength="30"
+            required
           />
           <span
-            class="modal__error_visible modal__input_type_error"
-            id="profile-title-input-error"
+            class="modal__error_visible"
+            id="modal__input-card-title-error"
           ></span>
           <input
             type="text"
@@ -110,18 +110,10 @@
             placeholder="Image URL"
             class="modal__input"
             value=""
+            required
           />
-          <span
-            class="modal__error_visible modal__input_type_error"
-            id="profile-description-input-error"
-          ></span>
-          <button
-            class="modal__button modal__button_disabled"
-            type="submit"
-            disabled
-          >
-            Save
-          </button>
+          <span class="modal__error_visible" id="modal__input-url-error"></span>
+          <button class="modal__button" type="submit" disabled>Save</button>
         </form>
       </div>
     </div>
