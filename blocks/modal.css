@@ -136,11 +136,11 @@
   left: 2px;
 }
 
-/* .modal__button_disabled {
+.modal__button_disabled {
   background-color: #fff;
   border-color: rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.2);
-} */
+}
 
 @media screen and (max-width: 680px) {
   .modal__close {
