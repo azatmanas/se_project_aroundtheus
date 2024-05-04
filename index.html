@@ -46,7 +46,7 @@
       <div class="modal__container">
         <button class="modal__close" id="modal__close-button"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form" novalidate>
+        <form class="modal__form" id="edit-profile-form" novalidate>
           <input
             type="text"
             name="title"
@@ -77,7 +77,7 @@
             id="profile__description-input-error"
           ></span>
 
-          <button class="modal__button" type="submit">Save</button>
+          <button class="modal__button" type="submit" disabled>Save</button>
         </form>
       </div>
     </div>
@@ -91,7 +91,7 @@
           <input
             type="text"
             name="title"
-            id="modal__input-card-title"
+            id="profile-title-input"
             placeholder="Title"
             class="modal__input"
             value=""
@@ -101,19 +101,28 @@
           />
           <span
             class="modal__error_visible"
-            id="modal__input-card-title-error"
+            id="profile-title-input-error"
           ></span>
           <input
             type="text"
             name="url"
-            id="modal__input-url"
+            id="profile-input-url"
             placeholder="Image URL"
             class="modal__input"
             value=""
             required
           />
-          <span class="modal__error_visible" id="modal__input-url-error"></span>
-          <button class="modal__button" type="submit">Save</button>
+          <span
+            class="modal__error_visible"
+            id="profile-input-url-error"
+          ></span>
+          <button
+            class="modal__button modal__button-disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>

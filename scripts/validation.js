@@ -17,7 +17,6 @@ function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.remove(inputErrorClass);
-
   errorMessageEl.textContent = "";
   errorMessageEl.classList.remove(errorClass);
 }
@@ -52,10 +51,11 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 
 function setEventListiners(formEl, options) {
   const { inputSelector, submitButtonSelector } = options;
-  const inputEls = [...document.querySelectorAll(inputSelector)];
+  const inputEls = [...formEl.querySelectorAll(inputSelector)];
   const submitButton = formEl.querySelector(submitButtonSelector);
+
   inputEls.forEach((inputEl) => {
-    inputEl.addEventListener("input", (e) => {
+    inputEl.addEventListener("input", () => {
       checkInputValidity(formEl, inputEl, options);
       toggleButtonState(inputEls, submitButton, options);
     });
@@ -66,7 +66,7 @@ function enableValidation(options) {
   const formEls = [...document.querySelectorAll(options.formSelector)];
   formEls.forEach((formEl) => {
     formEl.addEventListener("submit", (e) => {
-      e.prefentDefault();
+      e.preventDefault();
     });
     setEventListiners(formEl, options);
   });
