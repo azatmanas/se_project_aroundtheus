@@ -77,7 +77,14 @@
             id="profile__description-input-error"
           ></span>
 
-          <button class="modal__button" type="submit" disabled>Save</button>
+          <button
+            id="edit-submit-button"
+            class="modal__button"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -94,7 +101,6 @@
             id="profile-title-input"
             placeholder="Title"
             class="modal__input"
-            value=""
             minlength="1"
             maxlength="30"
             required
@@ -104,12 +110,11 @@
             id="profile-title-input-error"
           ></span>
           <input
-            type="text"
+            type="url"
             name="url"
             id="profile-input-url"
             placeholder="Image URL"
             class="modal__input"
-            value=""
             required
           />
           <span
@@ -117,6 +122,7 @@
             id="profile-input-url-error"
           ></span>
           <button
+            id="edit-submit-button"
             class="modal__button modal__button-disabled"
             type="submit"
             disabled

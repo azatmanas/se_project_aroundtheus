@@ -74,15 +74,20 @@ const closeButtons = document.querySelectorAll(".modal__close");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keyup", escapeKeyListiner);
+  modal.addEventListener("mousedown", handleOverLay);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", escapeKeyListiner);
+  modal.removeEventListener("mousedown", handleOverLay);
 }
 
 function escapeKeyListiner(evt) {
   if (evt.key === "Escape") {
-    closePopup(profileEditModal);
+    const popup = document.querySelector(".modal_opened");
+    closePopup(popup);
   }
 }
 
@@ -145,7 +150,7 @@ function getCardElement(data) {
 
 modalFormEdit.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
-window.addEventListener("click", handleOverLay);
+
 profileEditBtn.addEventListener("click", () => {
   modalInputTitle.value = profileTitle.textContent;
   modalInputDescrption.value = profileDescrption.textContent;

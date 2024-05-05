@@ -85,10 +85,11 @@
   font-weight: 400;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #000;
   color: #fff;
   margin-top: 18px;
-  padding: 14px 124px 18px 125px;
+  /* padding: 14px 124px 18px 125px; */
 }
 
 .modal__close_image-preview {
@@ -135,6 +136,7 @@
   line-height: 15px;
   top: 42px;
   left: 2px;
+  position: relative;
 }
 
 .modal__button_disabled {
@@ -169,6 +171,7 @@
     font-size: 14px;
     width: 238px;
     height: 46px;
+    padding: 0;
   }
 
   .modal__close_image-preview {

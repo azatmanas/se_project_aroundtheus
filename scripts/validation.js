@@ -28,12 +28,12 @@ function checkInputValidity(formEl, inputEl, options) {
   hideInputError(formEl, inputEl, options);
 }
 
-function disabledButton(submitButton, { inactiveButtonClass }) {
+function disabledButton(submitButton, inactiveButtonClass) {
   submitButton.classList.add(inactiveButtonClass);
   submitButton.disabled = true;
 }
 
-function enableButton(submitButton, { inactiveButtonClass }) {
+function enableButton(submitButton, inactiveButtonClass) {
   submitButton.classList.remove(inactiveButtonClass);
   submitButton.disabled = false;
 }
@@ -50,7 +50,7 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 }
 
 function setEventListiners(formEl, options) {
-  const { inputSelector, submitButtonSelector } = options;
+  const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   const submitButton = formEl.querySelector(submitButtonSelector);
 
