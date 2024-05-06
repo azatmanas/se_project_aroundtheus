@@ -74,17 +74,17 @@ const closeButtons = document.querySelectorAll(".modal__close");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keyup", escapeKeyListiner);
+  document.addEventListener("keydown", escapeKeyListener);
   modal.addEventListener("mousedown", handleOverLay);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", escapeKeyListiner);
+  document.removeEventListener("keydown", escapeKeyListener);
   modal.removeEventListener("mousedown", handleOverLay);
 }
 
-function escapeKeyListiner(evt) {
+function escapeKeyListener(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".modal_opened");
     closePopup(popup);
@@ -95,6 +95,7 @@ function handleOverLay(evt) {
   if (Array.from(evt.target.classList).includes("modal_opened")) {
     closePopup(profileEditModal);
     closePopup(profileAddModal);
+    closePopup(previewImageModal);
   }
 }
 
