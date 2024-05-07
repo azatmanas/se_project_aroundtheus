@@ -79,9 +79,9 @@ function openModal(modal) {
 }
 
 function closePopup(modal) {
-  modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", escapeKeyListener);
   modal.removeEventListener("mousedown", handleOverLay);
+  modal.classList.remove("modal_opened");
 }
 
 function escapeKeyListener(evt) {
@@ -93,9 +93,8 @@ function escapeKeyListener(evt) {
 
 function handleOverLay(evt) {
   if (Array.from(evt.target.classList).includes("modal_opened")) {
-    closePopup(profileEditModal);
-    closePopup(profileAddModal);
-    closePopup(previewImageModal);
+    const overlay = document.querySelector(".modal_opened");
+    closePopup(overlay);
   }
 }
 

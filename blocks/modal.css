@@ -93,10 +93,8 @@
   align-items: center;
   background-color: #000;
   color: #fff;
-  /* margin-top: 18px; */
   position: absolute;
   bottom: 36px;
-  /* padding: 14px 124px 18px 125px; */
 }
 
 .modal__button-disabled {
@@ -129,9 +127,11 @@
 }
 
 .modal__error {
-  color: #ff0000;
-  visibility: hidden;
   display: block;
+  font-size: 12px;
+  line-height: 15px;
+  height: 16px;
+  opacity: 0;
 }
 
 .modal__input_type_error {
@@ -140,12 +140,7 @@
 
 .modal__error_visible {
   color: #ff0000;
-  font-size: 12px;
-  line-height: 15px;
-  height: 16px;
-  /* top: 42px; */
-  /* left: 2px; */
-  /* position: absolute; */
+  opacity: 1;
 }
 
 @media screen and (max-width: 680px) {
