@@ -74,17 +74,17 @@ const closeButtons = document.querySelectorAll(".modal__close");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", escapeKeyListener);
+  document.addEventListener("keydown", handleEscape);
   modal.addEventListener("mousedown", handleOverLay);
 }
 
 function closePopup(modal) {
-  document.removeEventListener("keydown", escapeKeyListener);
+  document.removeEventListener("keydown", handleEscape);
   modal.removeEventListener("mousedown", handleOverLay);
   modal.classList.remove("modal_opened");
 }
 
-function escapeKeyListener(evt) {
+function handleEscape(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector(".modal_opened");
     closePopup(popup);
@@ -93,8 +93,7 @@ function escapeKeyListener(evt) {
 
 function handleOverLay(evt) {
   if (Array.from(evt.target.classList).includes("modal_opened")) {
-    const overlay = document.querySelector(".modal_opened");
-    closePopup(overlay);
+    closePopup(evt.target);
   }
 }
 
