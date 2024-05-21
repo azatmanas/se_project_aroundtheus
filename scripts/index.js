@@ -1,3 +1,5 @@
+import Card from "./Card.js";
+
 const initialCards = [
   {
     name: "Chicago",
@@ -43,6 +45,14 @@ const initialCards = [
 ];
 
 console.log(initialCards);
+
+const cardData = {
+  name: "Las Vegas",
+  link: "https://media-cdn.tripadvisor.com/media/photo-m/1280/2a/34/2d/28/caption.jpg",
+};
+
+const card = new Card(cardData, "#card-template");
+card.getView();
 
 const profileEditBtn = document.querySelector("#profile__edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
