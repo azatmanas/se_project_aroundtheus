@@ -1,4 +1,4 @@
-import Card from "./Card.js";
+import Card from "../components/Card.js";
 
 const initialCards = [
   {
@@ -52,7 +52,7 @@ const cardData = {
 };
 
 const card = new Card(cardData, "#card-template");
-card.getView();
+card.getCardElement();
 
 const profileEditBtn = document.querySelector("#profile__edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
