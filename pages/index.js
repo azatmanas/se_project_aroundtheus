@@ -1,58 +1,63 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
     name: "Chicago",
     link: "https://imageio.forbes.com/specials-images/imageserve/64c3fc893e9ca5472f03e583/Chicago-River-Tourboat-Downtown-Chicago-Skyscrapers/960x0.jpg?format=jpg",
-    // name: "Yosemite Valley",
-    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 
   {
     name: "San Francisco",
     link: "https://worldstrides.com/wp-content/uploads/2015/07/iStock_000061296808_Large-1.jpg",
-    // name: "Lake Louise",
-    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
 
   {
     name: "Miami",
     link: "https://www.islands.com/wp-content/uploads/2021/09/miami-beach-shutterstock.jpg",
-    // name: "Bald Mountains",
-    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
 
   {
     name: "Los Angeles",
     link: "https://static.independent.co.uk/2023/07/07/10/iStock-515064346.jpg",
-    // name: "Latemar",
-    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
 
   {
     name: "Hawaii",
     link: "https://ik.imgkit.net/3vlqs5axxjf/TW/ik-seo/uploadedImages/Art/2023/0703/T0703HAWISLANDHOP_C_HR/What-to-know-about-island-hopping-in-Hawaii.jpg",
-    // name: "Vanoise National Park",
-    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
 
   {
     name: "Las Vegas",
     link: "https://media-cdn.tripadvisor.com/media/photo-m/1280/2a/34/2d/28/caption.jpg",
-    // name: "Lago di Braies",
-    // link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
 
 console.log(initialCards);
 
-const cardData = {
-  name: "Las Vegas",
-  link: "https://media-cdn.tripadvisor.com/media/photo-m/1280/2a/34/2d/28/caption.jpg",
+function data(cardData) {
+  const card = new Card(cardData, "#card-template");
+  card.getCardElement();
+}
+
+initialCards.forEach((cardData) => data(cardData));
+
+const config = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button-disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
 };
 
-const card = new Card(cardData, "#card-template");
-card.getCardElement();
+const addFormElement = document.querySelector(".modal__form");
+const editFormElement = document.querySelector(".modal__form");
+
+const addFormValidator = new FormValidator(config, addFormElement);
+const editFormValidator = new FormValidator(config, editFormElement);
+
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
 
 const profileEditBtn = document.querySelector("#profile__edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
