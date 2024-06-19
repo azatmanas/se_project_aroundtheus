@@ -46,6 +46,10 @@
   bottom: calc(100% + 5px);
 }
 
+.modal__close:hover {
+  cursor: pointer;
+}
+
 .modal__close_image-preview {
   bottom: calc(100% + 30px);
   left: calc(100%-30%);
@@ -95,6 +99,10 @@
   color: #fff;
   position: absolute;
   bottom: 36px;
+}
+
+.modal__button:hover {
+  cursor: pointer;
 }
 
 .modal__button-disabled {

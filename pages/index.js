@@ -103,13 +103,13 @@ function handleOverLay(evt) {
   }
 }
 
-function data(cardData) {
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   return card.getCardElement();
 }
 
 function renderCard(cardData, cardListEl) {
-  const cardElement = data(cardData);
+  const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
 
@@ -134,8 +134,7 @@ function handleAddCardSubmit(evt) {
   renderCard({ name, link }, cardListEl);
   evt.target.reset();
   closePopup(profileAddModal);
-  addFormElement.reset();
-  addFormValidator._disableButton();
+  addFormValidator.disableButton();
 }
 
 modalFormEdit.addEventListener("submit", handleProfileEditSubmit);
