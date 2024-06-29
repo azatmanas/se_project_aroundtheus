@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Chicago",
     link: "https://imageio.forbes.com/specials-images/imageserve/64c3fc893e9ca5472f03e583/Chicago-River-Tourboat-Downtown-Chicago-Skyscrapers/960x0.jpg?format=jpg",
@@ -30,4 +30,10 @@ const initialCards = [
   },
 ];
 
-export default initialCards;
+export const config = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};

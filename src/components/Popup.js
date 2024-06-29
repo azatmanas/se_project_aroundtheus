@@ -17,13 +17,23 @@ export default class Popup {
 
   _handleEscClose(event) {
     if (event.key === "Escape") {
-      this.close();
+      const modalOpen = document.querySelector(".modal_opened");
+      this.close(modalOpen);
     }
+
+    _handleOverLayClick = (event) => {
+      if (event.target.classList.includes("modal_opened")) {
+        this.close(event.target);
+      }
+    };
   }
 
   setEventListiners() {
     this._closeButtons.addEventListener("click", () => {
       this.close();
+    });
+    this._popupElement.addEventListener("click", () => {
+      this._handleOverLayClick();
     });
   }
 }
