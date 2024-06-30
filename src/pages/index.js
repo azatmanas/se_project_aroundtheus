@@ -11,10 +11,15 @@ import UserInfo from "../components/UserInfo.js";
 // ELEMENTS////
 
 const profileEditBtn = document.querySelector("#profile__edit-button");
-const profileTitle = document.querySelector("#profile__title");
+const profileTitle = document.querySelector("#modal__input-title");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileAddModal = document.querySelector("#profile-add-modal");
+const modalInputDescrption = document.querySelector(
+  "#profile__description-input"
+);
 const profileDescrption = document.querySelector(".profile__description");
+const profileTitleMain = document.querySelector(".profile__title");
+
 const cardTitleInput = document.querySelector("#profile-title-input");
 const modalFormEdit = document.querySelector(".modal__form");
 const addFormElement = document.querySelector("#add__card-form");
@@ -55,10 +60,13 @@ const popupAddForm = new PopupWithForm(
 );
 popupAddForm.setEventListeners();
 
-const popupImage = new PopupWithImage(".modal__image");
-popupImage.setEventListeners();
+const popupImage = new PopupWithImage("#modal__image");
+popupImage.setEventListiners();
 
-const userInfo = new UserInfo(profileEditModal, profileDescrption);
+const userInfo = new UserInfo({
+  titleSelector: ".profile__title",
+  descriptionSelector: ".profile__description",
+});
 
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
@@ -96,7 +104,7 @@ addFormElement.addEventListener("submit", handleAddCardSubmit);
 profileEditBtn.addEventListener("click", () => {
   const cardData = userInfo.getUserInfo();
   profileTitle.value = cardData.title;
-  profileDescrption.value = cardData.description;
+  modalInputDescrption.value = cardData.description;
   popupEditForm.open();
 });
 

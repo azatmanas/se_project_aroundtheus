@@ -10,7 +10,7 @@ export default class UserInfo {
     };
   }
   setUserInfo(data) {
-    this._profileTitle.textContent = data.profileTitle;
+    this._profileTitle.textContent = data.title;
     this._profileDescrption.textContent = data.description;
   }
 }
