@@ -10,20 +10,11 @@ import UserInfo from "../components/UserInfo.js";
 // ELEMENTS////
 
 const profileEditBtn = document.querySelector("#profile__edit-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
-
-const profileTitle = document.querySelector(".profile__title");
-const profileDescrption = document.querySelector(".profile__description");
 const modalInputTitle = document.querySelector("#modal__input-title");
 const profileInputDescrption = document.querySelector(
   "#profile__description-input"
 );
-
-const profileAddModal = document.querySelector("#profile-add-modal");
 const addNewCardButton = document.querySelector(".profile__add-button");
-
-// const cardForm = profileAddModal.querySelector(".modal__form");
-
 const cardForm = document.forms["card_form"];
 const profileForm = document.forms["profile_form"];
 // ADD NEW CARD /////
