@@ -1,26 +1,52 @@
-class Api {
+export default class Api {
   constructor({ baseUrl, authToken }) {
     this._baseUrl = baseUrl;
     this._authToken = authToken;
   }
 
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: this._authToken,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Error: ${res.status}`).catch((err) => {
-        console.error(err);
+  async getInitialCards() {
+    try {
+      const res = await fetch(`${this._baseUrl}/cards`, {
+        headers: {
+          authorization: this._authToken,
+          "Content-Type": "application/json",
+        },
       });
-    });
+      return await (res.ok
+        ? res.json()
+        : Promise.reject(`Error: ${res.status}`));
+    } catch (err) {
+      console.error(err);
+    }
   }
 
-  // other methods for working with the API
-}
+  async getUserInfo() {
+    try {
+      const res = await fetch(`${this._baseUrl}/users/me`, {
+        headers: {
+          authorization: this._authToken,
+          "Content-Type": "application/json",
+        },
+      });
+      return await (res.ok
+        ? res.json()
+        : Promise.reject(`Error: ${res.status}`));
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
-export default Api;
+  addCard({ name, link }) {
+    fetch(`${this._baseUrl} users/me`, {
+      method: "POST",
+      headers: {
+        authorization: this._authToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "Marie Skłodowska Curie",
+        about: "Physicist and Chemist",
+      }),
+    });
+  }
+}

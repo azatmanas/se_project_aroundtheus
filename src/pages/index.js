@@ -12,10 +12,7 @@ import Api from "../components/Api.js";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "77570098-8218-4305-94d2-93e61885b891",
-    "Content-Type": "application/json",
-  },
+  authToken: "eac0c1a2-60c5-44c4-979d-14695d75b6b5",
 });
 
 const profileEditBtn = document.querySelector("#profile__edit-button");
@@ -33,8 +30,9 @@ const editFormValidator = new FormValidator(config, profileForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
+let section;
 api.getInitialCards().then((cards) => {
-  const section = new Section(
+  section = new Section(
     {
       items: cards,
       renderer: renderCard,
@@ -62,6 +60,12 @@ popupImage.setEventListiners();
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   descriptionSelector: ".profile__description",
+});
+
+api.getUserInfo().then((userData) => {
+  userInfo.setUserInfo(userData);
+  title: userData.name;
+  description: userData.about;
 });
 
 // FUNCTIONS/////
