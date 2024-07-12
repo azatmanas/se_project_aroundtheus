@@ -7,6 +7,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
+import { data } from "autoprefixer";
 
 // ELEMENTS////
 
@@ -47,12 +48,13 @@ const popupEditForm = new PopupWithForm(
   handleProfileEditSubmit
 );
 popupEditForm.setEventListeners();
-
+api.addCard(data);
 const popupAddForm = new PopupWithForm(
   "#profile-add-modal",
   handleAddCardSubmit
 );
 popupAddForm.setEventListeners();
+api.addCard(data);
 
 const popupImage = new PopupWithImage("#modal__image");
 popupImage.setEventListiners();

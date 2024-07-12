@@ -4,49 +4,81 @@ export default class Api {
     this._authToken = authToken;
   }
 
-  async getInitialCards() {
-    try {
-      const res = await fetch(`${this._baseUrl}/cards`, {
-        headers: {
-          authorization: this._authToken,
-          "Content-Type": "application/json",
-        },
-      });
-      return await (res.ok
-        ? res.json()
-        : Promise.reject(`Error: ${res.status}`));
-    } catch (err) {
-      console.error(err);
+  _handleRes(res) {
+    if (res.ok) {
+      return res.json();
     }
+    return Promise.reject(`Error ${res.status}`);
   }
 
-  async getUserInfo() {
-    try {
-      const res = await fetch(`${this._baseUrl}/users/me`, {
-        headers: {
-          authorization: this._authToken,
-          "Content-Type": "application/json",
-        },
-      });
-      return await (res.ok
-        ? res.json()
-        : Promise.reject(`Error: ${res.status}`));
-    } catch (err) {
-      console.error(err);
-    }
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      authToken: this._authToken,
+    }).then(this._handleRes);
   }
 
-  addCard({ name, link }) {
-    fetch(`${this._baseUrl} users/me`, {
-      method: "POST",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-      },
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      authToken: this._authToken,
+    }).then(this._handleRes);
+  }
+
+  updateProfileInfo({ title, description }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      authToken: this._authToken,
       body: JSON.stringify({
-        name: "Marie Skłodowska Curie",
-        about: "Physicist and Chemist",
+        name: title,
+        about: description,
       }),
-    });
+    }).then(this._handleRes);
+  }
+
+  updateAvatar({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      authToken: this._authToken,
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+    }).then(this._handleRes);
+  }
+
+  addCard({ title, url }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      authToken: this._authToken,
+      body: JSON.stringify({
+        name: title,
+        link: url,
+      }),
+    }).then(this._handleRes);
+  }
+
+  deleteCard(id) {
+    return fetch(`${this._baseUrl}/cards ${id}`, {
+      method: "DELETE",
+      authToken: this._authToken,
+    }).then(this._handleRes);
+  }
+
+  likeCard(id) {
+    return fetch(`${this._baseUrl}/cards ${id}likes`, {
+      method: "PUT",
+      authToken: this._authToken,
+      body: JSON.stringify({
+        isLiked: true,
+      }),
+    }).then(this._handleRes);
+  }
+
+  disLikeCard(id) {
+    return fetch(`${this._baseUrl}/cards ${id}likes`, {
+      method: "DELETE",
+      authToken: this._authToken,
+      body: JSON.stringify({
+        isLiked: false,
+      }),
+    }).then(this._handleRes);
   }
 }
