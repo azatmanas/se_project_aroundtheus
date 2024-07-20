@@ -7,7 +7,6 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
-import { data } from "autoprefixer";
 
 // ELEMENTS////
 
@@ -32,29 +31,33 @@ addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
 let section;
-api.getInitialCards().then((cards) => {
-  section = new Section(
-    {
-      items: cards,
-      renderer: renderCard,
-    },
-    ".cards__list"
-  );
-  section.renderItems(cards);
-});
+api
+  .getInitialCards()
+  .then((cards) => {
+    section = new Section(
+      {
+        items: cards,
+        renderer: renderCard,
+      },
+      ".cards__list"
+    );
+    section.renderItems(cards);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const popupEditForm = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
 popupEditForm.setEventListeners();
-api.addCard(data);
+
 const popupAddForm = new PopupWithForm(
   "#profile-add-modal",
   handleAddCardSubmit
 );
 popupAddForm.setEventListeners();
-api.addCard(data);
 
 const popupImage = new PopupWithImage("#modal__image");
 popupImage.setEventListiners();
@@ -64,11 +67,15 @@ const userInfo = new UserInfo({
   descriptionSelector: ".profile__description",
 });
 
-api.getUserInfo().then((userData) => {
-  userInfo.setUserInfo(userData);
-  title: userData.name;
-  description: userData.about;
-});
+api
+  .getUserInfo()
+  .then((userData) => {
+    userInfo.setUserInfo({ title: userData.name, description: userData.about });
+    userInfo.setupdateAvatar(userData.avatar);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // FUNCTIONS/////
 function createCard(cardData) {
@@ -86,6 +93,9 @@ function handleImageClick(name, link) {
 }
 
 function handleProfileEditSubmit(data) {
+  api.updateProfileInfo(data).then((res) => {
+    userInfo.setUserInfo(res);
+  });
   userInfo.setUserInfo(data);
   popupEditForm.close();
 }

@@ -1,3 +1,13 @@
+function fetchApi(baseURL, endpoint, authToken, method, body, restarter) {
+  return fetch(`${baseURL}/${endpoint}`, {
+    method,
+    headers: {
+      authorization: authToken,
+    },
+    body,
+  }).then(restarter);
+}
+
 export default class Api {
   constructor({ baseUrl, authToken }) {
     this._baseUrl = baseUrl;
@@ -12,26 +22,46 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      authToken: this._authToken,
-    }).then(this._handleRes);
+    // return fetch(`${this._baseUrl}/cards`, {
+    //   headers: {
+    //     authorization: this._authToken,
+    //   },
+    // }).then(this._handleRes);
+    return fetchApi(this._baseUrl, "cards", this._authToken, this._handleRes);
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      authToken: this._authToken,
-    }).then(this._handleRes);
+    // return fetch(`${this._baseUrl}/users/me`, {
+    //   headers: {
+    //     authorization: this._authToken,
+    //   },
+    // }).then(this._handleRes);
+    return fetchApi(this._baseUrl, "cards", this._authToken, this._handleRes);
   }
 
   updateProfileInfo({ title, description }) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      authToken: this._authToken,
-      body: JSON.stringify({
-        name: title,
-        about: description,
-      }),
-    }).then(this._handleRes);
+    // return fetch(`${this._baseUrl}/users/me`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     authorization: this._authToken,
+    //   },
+    //   body: JSON.stringify({
+    //     name: title,
+    //     about: description,
+    //   }),
+    // }).then(this._handleRes);
+    const body = JSON.stringify({
+      name: title,
+      about: description,
+    });
+    return fetchApi(
+      this._baseUrl,
+      this._authToken,
+      "users/me",
+      "PATCH",
+      body,
+      this._handleRes
+    );
   }
 
   updateAvatar({ avatar }) {
