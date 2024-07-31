@@ -10,11 +10,6 @@ import Api from "../components/Api.js";
 
 // ELEMENTS////
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  authToken: "eac0c1a2-60c5-44c4-979d-14695d75b6b5",
-});
-
 const profileEditBtn = document.querySelector("#profile__edit-button");
 const modalInputTitle = document.querySelector("#modal__input-title");
 const profileInputDescrption = document.querySelector(
@@ -30,18 +25,28 @@ const editFormValidator = new FormValidator(config, profileForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  authToken: "eac0c1a2-60c5-44c4-979d-14695d75b6b5",
+});
+
 let section;
 api
-  .getInitialCards()
-  .then((cards) => {
+  .getAll()
+  .then(([initialCards, userData]) => {
+    userInfo.updateProfileImage(userData.avatar);
+    userInfo.setUserInfo({
+      title: userData.name,
+      description: userData.about,
+    });
     section = new Section(
       {
-        items: cards,
+        items: initialCards,
         renderer: renderCard,
       },
       ".cards__list"
     );
-    section.renderItems(cards);
+    section.renderItems();
   })
   .catch((err) => {
     console.log(err);
@@ -65,6 +70,7 @@ popupImage.setEventListiners();
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   descriptionSelector: ".profile__description",
+  avatar: ".profile__image",
 });
 
 api
@@ -73,8 +79,8 @@ api
     userInfo.setUserInfo({ title: userData.name, description: userData.about });
     userInfo.setupdateAvatar(userData.avatar);
   })
-  .catch((err) => {
-    console.log(err);
+  .catch((res) => {
+    console.log(res);
   });
 
 // FUNCTIONS/////
