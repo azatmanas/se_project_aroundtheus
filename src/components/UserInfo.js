@@ -16,7 +16,7 @@ export default class UserInfo {
     this._profileDescrption.textContent = data.description;
   }
 
-  updateProfileImage() {
+  updateProfileImage(avatar) {
     this._avatar.src = avatar;
   }
 }

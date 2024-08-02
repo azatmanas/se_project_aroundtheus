@@ -65,23 +65,13 @@ const popupAddForm = new PopupWithForm(
 popupAddForm.setEventListeners();
 
 const popupImage = new PopupWithImage("#modal__image");
-popupImage.setEventListiners();
+popupImage.setEventListeners();
 
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   descriptionSelector: ".profile__description",
   avatar: ".profile__image",
 });
-
-api
-  .getUserInfo()
-  .then((userData) => {
-    userInfo.setUserInfo({ title: userData.name, description: userData.about });
-    userInfo.setupdateAvatar(userData.avatar);
-  })
-  .catch((res) => {
-    console.log(res);
-  });
 
 // FUNCTIONS/////
 function createCard(cardData) {
@@ -97,6 +87,32 @@ function renderCard(cardData) {
 function handleImageClick(name, link) {
   popupImage.open(name, link);
 }
+
+const formValidators = {};
+const forms = document.querySelectorAll(".modal__form");
+forms.forEach((form) => {
+  const formValidator = new FormValidator(config, form);
+  formValidators[form.id] = formValidator;
+  formValidator.enableValidation();
+});
+
+const handleAvatarSubmit = ({ avatar }) => {
+  editAvatar.setLoading(true);
+  api
+    .updateAvatar(avatar)
+    .then((res) => {
+      userInfo.updateProfileImage(res.avatar);
+      editAvatar.close();
+      formValidators["#edit-avatar-form"].toggleButtonState();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => editAvatar.setLoading(false));
+};
+
+const editAvatar = new PopupWithForm("#edit-avatar-modal", handleAvatarSubmit);
+editAvatar.setEventListeners();
 
 function handleProfileEditSubmit(data) {
   api.updateProfileInfo(data).then((res) => {
