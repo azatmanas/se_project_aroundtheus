@@ -1,11 +1,19 @@
 export default class Card {
-  constructor(cardData, cardSelector, handleImageClick, isLiked, _id) {
+  constructor(
+    cardData,
+    cardSelector,
+    handleImageClick,
+    handleCardLike,
+    handleCardDisLike
+  ) {
     this._name = cardData.name;
     this._link = cardData.link;
-    this._isLiked = isLiked;
-    this._id = _id;
+    this._isLiked = cardData.isLiked;
+    this._id = cardData._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleCardLike = handleCardLike;
+    this._handleCardDisLike = handleCardDisLike;
   }
 
   _setEventListener() {
@@ -40,6 +48,7 @@ export default class Card {
       .cloneNode(true);
     this._cardImage = this._cardElement.querySelector(".card__image");
     this._cardTitle = this._cardElement.querySelector(".card__title");
+    this._likeButton = this._cardElement.querySelector(".card__like-button");
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._cardTitle.textContent = this._name;

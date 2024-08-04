@@ -1,17 +1,11 @@
-// function fetchApi(baseURL, endpoint, authToken, method, body, restarter) {
-//   return fetch(`${baseURL}/${endpoint}`, {
-//     method,
-//     headers: {
-//       authorization: authToken,
-//     },
-//     body,
-//   }).then(restarter);
-// }
-
 export default class Api {
   constructor({ baseUrl, authToken }) {
     this._baseUrl = baseUrl;
     this._authToken = authToken;
+    this._headers = {
+      authorization: this._authToken,
+      "Content-Type": "application/json",
+    };
   }
 
   _handleRes(res) {
@@ -27,23 +21,19 @@ export default class Api {
         authorization: this._authToken,
       },
     }).then(this._handleRes);
-    // return fetchApi(this._baseUrl, "cards", this._authToken, this._handleRes);
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: {
-        authorization: this._authToken,
-      },
+      headers: this._headers,
     }).then(this._handleRes);
-    // return fetchApi(this._baseUrl, "cards", this._authToken, this._handleRes);
   }
 
   getAll() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
-  updateProfileInfo({ userData }) {
+  updateProfileInfo(cardId) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
@@ -54,18 +44,6 @@ export default class Api {
         about: userData.description,
       }),
     }).then(this._handleRes);
-    // const body = JSON.stringify({
-    //   name: title,
-    //   about: description,
-    // });
-    // return fetchApi(
-    //   this._baseUrl,
-    //   this._authToken,
-    //   "users/me",
-    //   "PATCH",
-    //   body,
-    //   this._handleRes
-    // );
   }
 
   updateAvatar({ link }) {
