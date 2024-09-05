@@ -53,7 +53,7 @@
         >
           <input
             type="text"
-            name="title"
+            name="name"
             id="modal__input-title"
             placeholder="Name"
             class="modal__input"
@@ -65,7 +65,7 @@
 
           <input
             type="text"
-            name="description"
+            name="about"
             id="profile__description-input"
             placeholder="Description"
             class="modal__input"
@@ -146,9 +146,11 @@
           class="modal__close"
           id="modal__delete-card"
         ></button>
-        <form class="modal__form modal__form_delete" id="modal-form-delete">
+        <form class="modal__form modal__form-delete" id="modal-form-delete">
           <h2 class="modal__heading">Are you sure?</h2>
-          <button class="modal__button" type="submit">Yes</button>
+          <button class="modal__button modal__button_delete" type="submit">
+            Yes
+          </button>
         </form>
       </div>
     </div>
@@ -166,7 +168,9 @@
             required
           />
           <span class="modal__error" id="avatar-url-error"></span>
-          <button class="modal__button" type="submit">Save</button>
+          <button class="modal__button modal__button_submit" type="submit">
+            Save
+          </button>
         </form>
       </div>
     </div>
