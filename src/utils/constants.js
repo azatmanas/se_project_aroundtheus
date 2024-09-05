@@ -37,26 +37,3 @@ export const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
-// function handleLikeClicks(cardId, cardElement) {
-//   if (cardElement.isLiked()) {
-//     api.disLikeCard(cardId).then((cardData) => {
-//       cardElement.setIsLiked();
-//       cardElement.renderLikes(cardData.isLiked);
-//     });
-//   }
-// }
-
-// function handleAvatarSubmit(data) {
-//   editAvatar.renderLoading(true);
-//   api
-//     .updateAvatar(data.url)
-//     .then((res) => {
-//       userInfo.updateAvatar(res);
-//       editAvatar.close();
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     })
-//     .finally(() => editAvatar.renderLoading(false));
-// }

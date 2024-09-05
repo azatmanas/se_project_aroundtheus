@@ -50,7 +50,8 @@ section.renderItems();
 api
   .getInitialCards()
   .then((cards) => {
-    section.renderItems(cards);
+    section.setItems(cards);
+    section.renderItems();
   })
   .catch((err) => {
     console.log(err);
@@ -165,11 +166,10 @@ function handleDeleteSubmit(card) {
 
   modalDelete.setSubmit(() => {
     modalDelete.renderLoading(true);
-    console.log(" submit ------>");
     api
-      .deleteCard(card.id)
+      .deleteCard(card._id)
       .then(() => {
-        card._handleCardDelete();
+        card.deleteCardFromDom();
         modalDelete.close();
       })
       .catch((err) => {
@@ -181,21 +181,21 @@ function handleDeleteSubmit(card) {
   });
 }
 
-function handleLikeClicks(cardId) {
-  if (!cardId.isLiked) {
+function handleLikeClicks(card) {
+  if (!card.isLiked) {
     api
-      .likeCard(cardId)
+      .likeCard(card._id)
       .then(() => {
-        cardId.setIsLiked(true);
+        card.setIsLiked(true);
       })
       .catch((err) => {
         console.log(err);
       });
-    if (cardId.isLiked) {
+    if (card.isLiked) {
       api
-        .disLikeCard(cardId)
+        .disLikeCard(card._id)
         .then(() => {
-          cardId.setIsLiked(false);
+          card.setIsLiked(false);
         })
         .catch((err) => {
           console.log(err);
@@ -235,7 +235,7 @@ addNewCardButton.addEventListener("click", () => popupAddForm.open());
 /* -------------------------------------------------------------------------- */
 const editAvatar = new PopupWithForm("#edit-avatar-modal", handleAvatarSubmit);
 editAvatar.setEventListeners();
-const addFormValidator = new FormValidator(config, cardForm);
-const editFormValidator = new FormValidator(config, profileForm);
-addFormValidator.enableValidation();
-editFormValidator.enableValidation();
+// const addFormValidator = new FormValidator(config, cardForm);
+// const editFormValidator = new FormValidator(config, profileForm);
+// addFormValidator.enableValidation();
+// editFormValidator.enableValidation();

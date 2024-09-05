@@ -70,7 +70,7 @@
 .modal__form {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   row-gap: 10px;
   margin-top: 54px;
 }
@@ -220,6 +220,7 @@
 
   .modal__heading {
     font-size: 18px;
+    text-align: center;
   }
 
   .modal__button {

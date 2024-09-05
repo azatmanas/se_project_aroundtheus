@@ -30,7 +30,7 @@ export default class Card {
     });
   }
 
-  _handleCardDelete() {
+  deleteCardFromDom() {
     this._cardElement.remove();
     this._cardElement = null;
   }
