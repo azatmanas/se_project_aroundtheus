@@ -36,8 +36,6 @@ const api = new Api({
   },
 });
 
-// let section;
-
 const section = new Section(
   {
     items: [],
@@ -101,14 +99,6 @@ function handleImageClick(cardData) {
   popupImage.open(cardData);
 }
 
-const formValidators = {};
-const forms = document.querySelectorAll(".modal__form");
-forms.forEach((form) => {
-  const formValidator = new FormValidator(config, form);
-  formValidators[form.id] = formValidator;
-  formValidator.enableValidation();
-});
-
 const handleAvatarSubmit = ({ avatar }) => {
   editAvatar.renderLoading(true);
   api
@@ -116,7 +106,6 @@ const handleAvatarSubmit = ({ avatar }) => {
     .then((res) => {
       userInfo.updateProfileInfo(res.avatar);
       editAvatar.close();
-      formValidators["#edit-avatar-form"].toggleButtonState();
     })
     .catch((err) => {
       console.log(err);
@@ -149,6 +138,8 @@ function handleAddCardSubmit({ title, url }) {
       const cardElement = createCard(cardData);
       section.addItem(cardElement);
       popupAddForm.close();
+      popupAddForm.reset();
+      addFormValidator.resetValidation();
     })
     .catch((err) => {
       console.log(err);
@@ -223,7 +214,7 @@ api
 
 profileEditBtn.addEventListener("click", () => {
   const cardData = userInfo.getUserInfo();
-  modalInputTitle.value = cardData.title;
+  modalInputTitle.value = cardData.name;
   profileInputDescrption.value = cardData.description;
   popupEditForm.open();
 });
@@ -235,7 +226,7 @@ addNewCardButton.addEventListener("click", () => popupAddForm.open());
 /* -------------------------------------------------------------------------- */
 const editAvatar = new PopupWithForm("#edit-avatar-modal", handleAvatarSubmit);
 editAvatar.setEventListeners();
-// const addFormValidator = new FormValidator(config, cardForm);
-// const editFormValidator = new FormValidator(config, profileForm);
-// addFormValidator.enableValidation();
-// editFormValidator.enableValidation();
+const addFormValidator = new FormValidator(config, cardForm);
+const editFormValidator = new FormValidator(config, profileForm);
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
