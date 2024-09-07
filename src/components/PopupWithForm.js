@@ -20,15 +20,6 @@ export default class PopupWithForm extends Popup {
     return formValues;
   }
 
-  reset() {
-    const formValues = {};
-    this._inputValues.forEach((input) => {
-      input.value = "";
-      formValues[input.name] = "";
-    });
-    return formValues;
-  }
-
   renderLoading(isLoading) {
     if (isLoading) {
       this._modalSubmitButton.textContent = "Saving...";

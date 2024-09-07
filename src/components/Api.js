@@ -53,7 +53,7 @@ export default class Api {
     }).then(this._handleRes);
   }
   disLikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards /${cardId}likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._handleRes);
