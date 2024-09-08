@@ -14,6 +14,7 @@ export default class UserInfo {
   setUserInfo({ name, about }) {
     this._profileName.textContent = name;
     this._profileDescrption.textContent = about;
+    // testing PR
   }
 
   updateAvatar(data) {
