@@ -18,12 +18,14 @@ const modalInputTitle = document.querySelector("#modal__input-title");
 const profileInputDescrption = document.querySelector(
   "#profile__description-input"
 );
+const avatarEditBtn = document.querySelector("#profile__avatar");
 /* -------------------------------------------------------------------------- */
 /*                                  ADD NEW CARD                                  */
 /* -------------------------------------------------------------------------- */
 const addNewCardButton = document.querySelector(".profile__add-button");
 const cardForm = document.forms["card_form"];
 const profileForm = document.forms["profile_form"];
+const avatarForm = document.forms["edit-avatar-form"];
 
 /* -------------------------------------------------------------------------- */
 /*                                  Api                                   */
@@ -63,6 +65,12 @@ const editProfilePopup = new PopupWithForm(
 );
 editProfilePopup.setEventListeners();
 
+const editAvatarPopup = new PopupWithForm(
+  "#edit-avatar-modal",
+  handleAvatarSubmit
+);
+editAvatarPopup.setEventListeners();
+
 const addCardPopup = new PopupWithForm(
   "#profile-add-modal",
   handleAddCardSubmit
@@ -99,20 +107,21 @@ function handleImageClick(cardData) {
   popupImage.open(cardData);
 }
 
-const handleAvatarSubmit = (url) => {
-  editAvatar.renderLoading(true);
-
+function handleAvatarSubmit(url) {
+  editAvatarPopup.renderLoading(true);
   api
     .updateAvatar(url)
     .then((res) => {
       userInfo.updateAvatar(res);
-      editAvatar.close();
+      avatarForm.reset();
+      avatarFormValidator.resetValidation();
+      editAvatarPopup.close();
     })
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => editAvatar.renderLoading(false));
-};
+    .finally(() => editAvatarPopup.renderLoading(false));
+}
 
 function handleProfileEditSubmit({ name, about }) {
   editProfilePopup.renderLoading(true);
@@ -220,14 +229,17 @@ profileEditBtn.addEventListener("click", () => {
   editProfilePopup.open();
 });
 
+avatarEditBtn.addEventListener("click", () => editAvatarPopup.open());
+
 addNewCardButton.addEventListener("click", () => addCardPopup.open());
 
 /* -------------------------------------------------------------------------- */
 /*                                  Validations                                   */
 /* -------------------------------------------------------------------------- */
-const editAvatar = new PopupWithForm("#edit-avatar-modal", handleAvatarSubmit);
-editAvatar.setEventListeners();
 const addFormValidator = new FormValidator(config, cardForm);
 const editFormValidator = new FormValidator(config, profileForm);
+const avatarFormValidator = new FormValidator(config, avatarForm);
+
+avatarFormValidator.enableValidation();
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();

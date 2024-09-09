@@ -37,11 +37,3 @@ export const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
-// const formValidators = {};
-// const forms = document.querySelectorAll(".modal__form");
-// forms.forEach((form) => {
-//   const formValidator = new FormValidator(config, form);
-//   formValidators[form.id] = formValidator;
-//   formValidator.enableValidation();
-// });
