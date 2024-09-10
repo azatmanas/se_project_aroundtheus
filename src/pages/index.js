@@ -183,25 +183,11 @@ function handleDeleteSubmit(card) {
 }
 
 function handleLikeClicks(card) {
-  if (!card.isLiked) {
-    api
-      .likeCard(card._id)
-      .then(() => {
-        card.setIsLiked(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } else {
-    api
-      .disLikeCard(card._id)
-      .then(() => {
-        card.setIsLiked(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  api[card._isLiked ? "disLikeCard" : "likeCard"](card._id)
+    .then(() => {
+      card.setIsLiked(!card._isLiked);
+    })
+    .catch(console.error);
 }
 
 api

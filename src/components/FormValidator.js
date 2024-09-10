@@ -6,6 +6,7 @@ export default class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._element = formElement;
+    this._inputEls = [...this._element.querySelectorAll(this._inputSelector)];
   }
 
   _showInputError(inputElement) {
@@ -56,7 +57,6 @@ export default class FormValidator {
   }
 
   _setEventListiners() {
-    this._inputEls = [...this._element.querySelectorAll(this._inputSelector)];
     this._submitButton = this._element.querySelector(
       this._submitButtonSelector
     );
@@ -87,10 +87,9 @@ export default class FormValidator {
   }
 
   resetValidation() {
-    const inputList = this._element.querySelectorAll(".modal__input");
-    inputList.forEach((input) => {
+    this._toggleButtonState();
+    this._inputEls.forEach((input) => {
       this._hideInputError(input);
-      this._toggleButtonState();
     });
   }
 }
