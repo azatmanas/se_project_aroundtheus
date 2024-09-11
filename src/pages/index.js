@@ -53,9 +53,7 @@ api
     section.setItems(cards);
     section.renderItems();
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .catch(console.error);
 
 /* -------------------------------------------------------------------------- */
 /*                                  Popups                                    */
@@ -118,9 +116,7 @@ function handleAvatarSubmit(url) {
       avatarFormValidator.resetValidation();
       editAvatarPopup.close();
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch(console.error)
     .finally(() => editAvatarPopup.renderLoading(false));
 }
 
@@ -132,9 +128,7 @@ function handleProfileEditSubmit({ name, about }) {
       userInfo.setUserInfo(userData);
       editProfilePopup.close();
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch(console.error)
     .finally(() => {
       editProfilePopup.renderLoading(false);
     });
@@ -152,9 +146,7 @@ function handleAddCardSubmit({ title, url }) {
       cardForm.reset();
       addFormValidator.resetValidation();
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch(console.error)
     .finally(() => {
       addCardPopup.renderLoading(false);
     });
@@ -174,9 +166,7 @@ function handleDeleteSubmit(card) {
         card.deleteCardFromDom();
         modalDelete.close();
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch(console.error)
       .finally(() => {
         modalDelete.renderLoading(false);
       });
@@ -200,9 +190,7 @@ api
       about: data.about,
     });
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .catch(console.error);
 
 /* -------------------------------------------------------------------------- */
 /*                                  Buttons                                   */
