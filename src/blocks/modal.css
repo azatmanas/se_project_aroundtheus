@@ -24,7 +24,6 @@
 .modal__container {
   position: relative;
   width: 430px;
-  height: 330px;
   border-radius: 10px;
   background-color: #fff;
   padding: 36px;
@@ -98,7 +97,6 @@
   align-items: center;
   background-color: #000;
   color: #fff;
-  position: absolute;
   bottom: 36px;
 }
 
