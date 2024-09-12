@@ -8,7 +8,7 @@ export default class Card {
   ) {
     this._name = data.name;
     this._link = data.link;
-    this._isLiked = data.isLiked;
+    this.isLiked = data.isLiked;
     this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
@@ -36,12 +36,12 @@ export default class Card {
   }
 
   setIsLiked(isLiked) {
-    this._isLiked = isLiked;
+    this.isLiked = isLiked;
     this._renderLikes();
   }
 
   _renderLikes() {
-    if (this._isLiked) {
+    if (this.isLiked) {
       this._likeButton.classList.add("card__like-button_active");
     } else {
       this._likeButton.classList.remove("card__like-button_active");

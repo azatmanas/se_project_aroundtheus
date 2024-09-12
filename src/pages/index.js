@@ -1,7 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css";
-import { config } from "../utils/constants.js";
+import { initialCards, config } from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupConfirmDelete from "../components/PopupConfirmDelete.js";
@@ -40,12 +40,11 @@ const api = new Api({
 
 const section = new Section(
   {
-    items: [],
+    items: initialCards,
     renderer: renderCard,
   },
   ".cards__list"
 );
-section.renderItems();
 
 api
   .getInitialCards()
@@ -115,6 +114,7 @@ function handleAvatarSubmit(url) {
       avatarForm.reset();
       avatarFormValidator.resetValidation();
       editAvatarPopup.close();
+      editAvatarPopup.disableButton();
     })
     .catch(console.error)
     .finally(() => editAvatarPopup.renderLoading(false));
@@ -145,6 +145,7 @@ function handleAddCardSubmit({ title, url }) {
       addCardPopup.close();
       cardForm.reset();
       addFormValidator.resetValidation();
+      addCardPopup.disableButton();
     })
     .catch(console.error)
     .finally(() => {
@@ -174,13 +175,21 @@ function handleDeleteSubmit(card) {
 }
 
 function handleLikeClicks(card) {
-  api[card._isLiked ? "disLikeCard" : "likeCard"](card._id)
+  if (card.isLiked) {
+    api
+      .disLikeCard(card._id)
+      .then(() => {
+        card.setIsLiked(false);
+      })
+      .catch(console.error);
+  }
+  api
+    .likeCard(card._id)
     .then(() => {
-      card.setIsLiked(!card._isLiked);
+      card.setIsLiked(true);
     })
     .catch(console.error);
 }
-
 api
   .getUserInfo()
   .then((data) => {
