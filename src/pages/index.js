@@ -114,7 +114,7 @@ function handleAvatarSubmit(url) {
       avatarForm.reset();
       avatarFormValidator.resetValidation();
       editAvatarPopup.close();
-      editAvatarPopup.disableButton();
+      avatarFormValidator.disableButton();
     })
     .catch(console.error)
     .finally(() => editAvatarPopup.renderLoading(false));
@@ -145,7 +145,7 @@ function handleAddCardSubmit({ title, url }) {
       addCardPopup.close();
       cardForm.reset();
       addFormValidator.resetValidation();
-      addCardPopup.disableButton();
+      addFormValidator.disableButton();
     })
     .catch(console.error)
     .finally(() => {
