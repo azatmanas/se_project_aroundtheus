@@ -112,7 +112,6 @@ function handleAvatarSubmit(url) {
     .then((res) => {
       userInfo.updateAvatar(res);
       avatarForm.reset();
-      avatarFormValidator.resetValidation();
       editAvatarPopup.close();
       avatarFormValidator.disableButton();
     })
@@ -144,7 +143,6 @@ function handleAddCardSubmit({ title, url }) {
       section.addItem(cardElement);
       addCardPopup.close();
       cardForm.reset();
-      addFormValidator.resetValidation();
       addFormValidator.disableButton();
     })
     .catch(console.error)
