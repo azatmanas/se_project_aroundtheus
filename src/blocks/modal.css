@@ -24,7 +24,6 @@
 .modal__container {
   position: relative;
   width: 430px;
-  height: 330px;
   border-radius: 10px;
   background-color: #fff;
   padding: 36px;
@@ -98,7 +97,6 @@
   align-items: center;
   background-color: #000;
   color: #fff;
-  position: absolute;
   bottom: 36px;
 }
 
@@ -116,6 +114,48 @@
 .modal__button_disabled:hover {
   opacity: 0.2;
   cursor: default;
+}
+
+.modal__button_delete {
+  width: 358px;
+  height: 50px;
+  background-color: black;
+  color: #fff;
+  border-radius: 2px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__button_delete:hover {
+  opacity: 80%;
+}
+
+.modal__button_submit {
+  width: 358px;
+  height: 50px;
+  background-color: black;
+  color: #fff;
+  margin-top: 18px;
+  border-radius: 2px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__button_submit:hover {
+  opacity: 80%;
+}
+
+.modal__button_submit_disabled {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0, 0.2);
+  border: solid 1px rgb(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.modal__button_submit_disabled:hover {
+  opacity: 1;
 }
 
 .modal__image {
